@@ -1,0 +1,81 @@
+#export BROWSER="${HOME}/firefox/run-mozilla.sh ${HOME}/firefox/firefox"
+
+export PATH="${HOME}/bin/:${PATH}"
+
+export PAGER="/usr/bin/vimpager"
+export MANPAGER="/usr/bin/vimmanpager"
+
+export GTK2_RC_FILES="${HOME}"/.gtkrc-2.0
+
+
+# Android
+export PATH="${PATH}:${HOME}/Hacking/android/sdk/tools:${HOME}/Hacking/android/sdk/platform-tools"
+
+export GTK_IM_MODULE=xim
+export QT_IM_MODULE=xim
+
+if [[ $UID == 0 ]] ; then
+	zstyle ':prompt:grml:*:items:user' pre '%F{red}'
+else
+	zstyle ':prompt:grml:*:items:user' pre '%F{blue}'
+fi
+
+
+if [[ "$TERM" == "xterm" ]]; then
+    # No it isn't, it's gnome-terminal
+    export TERM=xterm-256color
+fi
+
+bmake() {
+    bear -o compile_commands.tmp -- make "${@}"
+    head -n-1 compile_commands.tmp >> compile_commands.new
+    echo ',' >> compile_commands.new
+    tail -n+2 compile_commands.json >> compile_commands.new
+    mv compile_commands.new compile_commands.json
+    rm compile_commands.tmp
+}
+
+gerrit-show() {
+        git fetch gerrit
+        local refs last ref 
+        refs=$(git ls-remote gerrit | cut -d$'\t' -f2 | grep "/${1}/[[:digit:]]$") 
+        last=$(cut -d/ -f5 <<< $refs | sort -n | tail -n1) 
+        ref=$(grep "/${1}/${last}$" <<< $refs) 
+        if [[ -n ${ref} ]]; then
+                git fetch gerrit ${ref} && git show --stat -p FETCH_HEAD
+        else
+                echo "No matching ref identified: ${1}" >&2 
+                return 1
+        fi
+}
+
+gerrit='ssh -p 29418 moben@galileo.mailstation.de gerrit'
+
+eval `dircolors -b /etc/DIR_COLORS`
+
+alias mnt="findmnt --df"
+
+alias vp=$PAGER
+alias cavec='cave fix-cache ; cave generate-metadata ; cave manage-search-index -c /var/cache/paludis/cave-search-index'
+alias caves='cave search --index /var/cache/paludis/cave-search-index '
+alias caver='cave resolve --resume-file /var/cache/paludis/cave-resume-file '
+alias caveu="cave resolve --resume-file /var/cache/paludis/cave-resume-file -c -Cs -P '*/*' world -Rw "
+
+
+cavesc() {
+    cave sync $*
+    cavec
+}
+
+cavewatch() {
+	less /var/log/paludis/([0-9]##-${2:-"install"}-*${1}*.out)(.om[1])
+}
+
+compdef _cave_cmd_sync cavesc=cave
+compdef _cave_cmd_search caves=cave
+compdef _cave_cmd_resolve caver=cave
+compdef _cave_cmd_resolve caveu=cave
+
+compdef _git cnf=git
+
+ulimit -s unlimited
