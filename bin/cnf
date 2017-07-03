@@ -1,0 +1,8 @@
+#!/bin/bash
+
+GIT_OPTS=(
+  --git-dir="${HOME}/.cnf"
+  --work-tree="${HOME}"
+)
+
+exec git "${GIT_OPTS[@]}" "${@}"
