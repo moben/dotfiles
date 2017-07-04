@@ -51,8 +51,6 @@ gerrit-show() {
 
 gerrit='ssh -p 29418 moben@galileo.mailstation.de gerrit'
 
-eval `dircolors -b /etc/DIR_COLORS`
-
 alias mnt="findmnt --df"
 
 alias vp=$PAGER
@@ -77,5 +75,9 @@ compdef _cave_cmd_resolve caver=cave
 compdef _cave_cmd_resolve caveu=cave
 
 compdef _git cnf=git
+
+eval `dircolors -b /etc/DIR_COLORS`
+source ~/.base16-shell/base16-shell.plugin.zsh
+base16_default-dark
 
 ulimit -s unlimited
