@@ -4,6 +4,7 @@ export PATH="${HOME}/bin/:${PATH}"
 
 export PAGER="/usr/bin/vimpager"
 export MANPAGER="/usr/bin/vimmanpager"
+export TERMINAL="germinal"
 
 export GTK2_RC_FILES="${HOME}"/.gtkrc-2.0
 
