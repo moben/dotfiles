@@ -77,9 +77,21 @@ compdef _cave_cmd_resolve caveu=cave
 
 compdef _git cnf=git
 
+cnf_maybe_fetch() {
+  date_now=$(date +%s)
+  date_fetched=${date_fetched:-$(date +%s)}
+  if [[ $((date_now - date_fetched)) -ge 3600 ]]; then
+    date_fetched=${date_now}
+    cnf fetch
+  fi
+}
+
 cnf_changed() {
+  cnf_maybe_fetch
   if [[ $(cnf status --porcelain) != "" ]]; then
-    REPLY="{ dotfiles changed } "
+    REPLY="{ dotfiles changed locally } "
+  elif [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]]; then
+    REPLY="{ dotfiles not in sync } "
   fi
 }
 grml_theme_add_token cnf -f cnf_changed '%B%F{yellow}' '%f%b'
