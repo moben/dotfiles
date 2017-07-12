@@ -15,6 +15,8 @@ export PATH="${PATH}:${HOME}/Hacking/android/sdk/tools:${HOME}/Hacking/android/s
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 
+zmodload zsh/datetime
+
 if [[ $UID == 0 ]] ; then
 	zstyle ':prompt:grml:*:items:user' pre '%F{red}'
 else
@@ -78,8 +80,8 @@ compdef _cave_cmd_resolve caveu=cave
 compdef _git cnf=git
 
 _zshrc_cnf_maybe_fetch() {
-  _zshrc_cnf_date_now=$(date +%s)
-  _zshrc_cnf_date_fetched=${_zshrc_cnf_date_fetched:-$(date +%s)}
+  _zshrc_cnf_date_now=${EPOCHSECONDS}
+  _zshrc_cnf_date_fetched=${_zshrc_cnf_date_fetched:-${EPOCHSECONDS}}
   if [[ $((_zshrc_cnf_date_now - _zshrc_cnf_date_fetched)) -ge 3600 ]]; then
     _zshrc_cnf_date_fetched=${_zshrc_cnf_date_now}
     cnf fetch &> /dev/null &!
