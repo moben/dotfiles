@@ -82,7 +82,7 @@ cnf_maybe_fetch() {
   date_fetched=${date_fetched:-$(date +%s)}
   if [[ $((date_now - date_fetched)) -ge 3600 ]]; then
     date_fetched=${date_now}
-    cnf fetch
+    cnf fetch &> /dev/null &!
   fi
 }
 
