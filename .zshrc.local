@@ -92,7 +92,7 @@ _zshrc_cnf_changed() {
   _zshrc_cnf_maybe_fetch
   if [[ $(cnf status --porcelain) != "" ]]; then
     REPLY="{ dotfiles changed locally } "
-  elif [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]]; then
+  elif [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] || ! cnf merge --ff-only --quiet origin/master; then
     REPLY="{ dotfiles not in sync } "
   fi
 }
