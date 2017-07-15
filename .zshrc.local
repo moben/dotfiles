@@ -96,9 +96,9 @@ _zshrc_cnf_changed() {
     REPLY="{ dotfiles not in sync } "
   fi
 }
-grml_theme_add_token cnf -f _zshrc_cnf_changed '%B%F{yellow}' '%f%b'
+grml_theme_add_token cnf_changed -f _zshrc_cnf_changed '%B%F{yellow}' '%f%b'
 # hopefully the default doesn't change too often :-/
-zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs cnf percent
+zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs cnf_changed percent
 
 eval `dircolors -b /etc/DIR_COLORS`
 source ~/.base16-shell/base16-shell.plugin.zsh
