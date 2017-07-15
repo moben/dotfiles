@@ -79,18 +79,17 @@ compdef _cave_cmd_resolve caveu=cave
 
 compdef _git cnf=git
 
-_zshrc_cnf_maybe_fetch_n_merge() {
+_zshrc_cnf_maybe_fetch() {
   _zshrc_cnf_date_now=${EPOCHSECONDS}
   _zshrc_cnf_date_fetched=${_zshrc_cnf_date_fetched:-${EPOCHSECONDS}}
   if [[ $((_zshrc_cnf_date_now - _zshrc_cnf_date_fetched)) -ge 3600 ]]; then
     _zshrc_cnf_date_fetched=${_zshrc_cnf_date_now}
     cnf fetch &> /dev/null &!
-    cnf merge --ff-only --quiet origin/master
   fi
 }
 
 _zshrc_cnf_changed() {
-  _zshrc_cnf_maybe_fetch_n_merge
+  _zshrc_cnf_maybe_fetch
   if [[ $(cnf status --porcelain) != "" ]]; then
     REPLY="{ dotfiles changed locally } "
   elif [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]]; then
