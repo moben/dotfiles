@@ -59,8 +59,7 @@ alias mnt="findmnt --df"
 alias vp=$PAGER
 alias cavec='cave fix-cache ; cave generate-metadata ; cave manage-search-index -c /var/cache/paludis/cave-search-index'
 alias caves='cave search --index /var/cache/paludis/cave-search-index '
-alias caver='cave resolve --resume-file /var/cache/paludis/cave-resume-file '
-alias caveu="cave resolve --resume-file /var/cache/paludis/cave-resume-file -c -Cs -P '*/*' world -Rw "
+alias caveu="cave resolve -c -Cs -P '*/*' world -Rw "
 
 
 cavesc() {
@@ -69,7 +68,7 @@ cavesc() {
 }
 
 cavewatch() {
-	less /var/log/paludis/([0-9]##-${2:-"install"}-*${1}*.out)(.om[1])
+	less -R /var/log/paludis/([0-9]##-${2:-"install"}-*${1}*.out)(.om[1])
 }
 
 compdef _cave_cmd_sync cavesc=cave
@@ -107,3 +106,4 @@ source ~/.base16-shell/base16-shell.plugin.zsh
 base16_default-dark
 
 ulimit -s unlimited
+
