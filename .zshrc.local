@@ -104,5 +104,3 @@ eval `dircolors -b /etc/DIR_COLORS`
 source ~/.base16-shell/base16-shell.plugin.zsh
 base16_eighties
 
-ulimit -s unlimited
-
