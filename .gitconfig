@@ -68,6 +68,9 @@
 	        git rebase origin/${1:-master};             \
 	    }; f"
 
+[include]
+	path = ~/.gitconfig.local
+
 [tig]
 	blame-options = -C -C -C
 	diff-options = -M10 -C -C --patience
