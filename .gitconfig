@@ -1,0 +1,74 @@
+[user]
+	name = Benedikt Morbach
+	email = benedikt.morbach@googlemail.com
+	signingkey = 12AFB46F
+
+[sendemail "gmail"]
+	from = Benedikt Morbach <benedikt.morbach@googlemail.com>
+	smtpencryption = tls
+	smtpserver = smtp.gmail.com
+	smtpuser = benedikt.morbach@googlemail.com
+	smtpserverport = 587
+
+[url "git@github.com:"]
+	pushInsteadOf = "https://github.com/"
+	pushInsteadOf = "http://github.com/"
+	pushInsteadOf = "git://github.com/"
+	pushInsteadOf = "gh:"
+
+[url "ssh://git@git.exherbo.org"]
+	pushInsteadOf = "git://git.exherbo.org"
+	pushInsteadOf = "https://git.exherbo.org"
+
+[url "ssh://git@gitlab.exherbo.org"]
+	pushInsteadOf = "https://gitlab.exherbo.org"
+
+[color]
+	ui = auto
+	interactive = true
+	diff = true
+	pager = false
+
+[diff]
+	renames = copies
+	algorithm = histogram
+
+[credential]
+	helper = libsecret
+
+[sendemail]
+	smtpencryption = tls
+
+[core]
+	quotePath = false
+
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[receive]
+	fsckObjects = true 
+
+[alias]
+	rbi = "!                                            \
+	    g() {                                           \
+	        git rebase -i origin/${1:-master};          \
+	     }; g"
+	expush = "!                                         \
+	    f() {                                           \
+	        local state=$(git status --porcelain);      \
+	        local hash=$(git rev-parse --verify HEAD);  \
+	        if [[ -n ${state} ]]; then                  \
+	            echo 'Dirty tree:';                     \
+	            echo ${state};                          \
+	            return 2;                               \
+	        fi;                                         \
+	        git rbi ${1} && git push;                   \
+	        git reset --hard ${hash};                   \
+	        git rebase origin/${1:-master};             \
+	    }; f"
+
+[tig]
+	blame-options = -C -C -C
+	diff-options = -M10 -C -C --patience
+
