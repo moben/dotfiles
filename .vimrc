@@ -28,11 +28,16 @@ Plug 'vivien/vim-linux-coding-style'
 "Plug 'godlygeek/csapprox'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "Plug 'guns/xterm-color-table.vim'
 " Initialize plugin system
 call plug#end()
 
 let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " needed for correct colors with base16-shell
 let base16colorspace=256
