@@ -20,6 +20,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'vivien/vim-linux-coding-style'
 "Plug 'scrooloose/syntastic'
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'godlygeek/csapprox'
@@ -33,6 +34,8 @@ Plug 'guns/xterm-color-table.vim'
 call plug#end()
 
 syntax on
+
+let g:linuxsty_patterns = [ "/usr/src/linux", $HOME . "/Hacking/linux", $HOME . "/src/qsimu-linux/" ]
 
 set background=dark
 "colorscheme inkpot
