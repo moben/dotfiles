@@ -34,6 +34,8 @@ call plug#end()
 
 let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
 
+" needed for correct colors with base16-shell
+let base16colorspace=256
 set background=dark
 "colorscheme solarized
 "colorscheme base16-default-dark
