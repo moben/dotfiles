@@ -21,46 +21,24 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'vivien/vim-linux-coding-style'
+"Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'scrooloose/syntastic'
 "Plug 'Valloric/YouCompleteMe'
-"Plug 'godlygeek/csapprox'
 "Plug 'jakar/vim-AnsiEsc'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'godlygeek/csapprox'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
-Plug 'guns/xterm-color-table.vim'
-"Plug 'hg::https://bitbucket.org/abudden/taghighlight'
+"Plug 'guns/xterm-color-table.vim'
 " Initialize plugin system
 call plug#end()
 
-syntax on
-
-let g:linuxsty_patterns = [ "/usr/src/linux", $HOME . "/Hacking/linux", $HOME . "/src/qsimu-linux/" ]
+let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
 
 set background=dark
-"colorscheme inkpot
 "colorscheme solarized
 "colorscheme base16-default-dark
 colorscheme base16-eighties
 
-set conceallevel=2
-highlight Conceal guifg=white ctermfg=255
-
 let g:indent_guides_auto_colors = has('gui_running')
 let g:indent_guides_enable_on_vim_startup = has('gui_running')
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
-"autocmd VimEnter,Colorscheme * :IndentGuidesEnable
-"autocmd VimEnter * :AnsiEsc
 
-let g:syntastic_c_checkers = ['ycm']
-let g:syntastic_cpp_checkers = ['ycm']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_error_symbol='✗'                                                                                                                                             
-let g:syntastic_warning_symbol='⚠'
-
-if exists('g:vimpager.enabled')
-  let g:vimpager.X11 = 0
-endif
