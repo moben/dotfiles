@@ -1,6 +1,6 @@
 set nocompatible               " be iMproved
 
-set tabstop=2 shiftwidth=2 expandtab
+set tabstop=4 shiftwidth=4 expandtab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
