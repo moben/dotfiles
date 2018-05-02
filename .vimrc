@@ -1,5 +1,8 @@
 set nocompatible               " be iMproved
 
+" set this here so project specific configs can override it later
+set tabstop=4 shiftwidth=4 expandtab
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -63,7 +66,6 @@ set noshowmode
 "let g:airline_section_z = '[%L] %4l:%-2v'
 
 
-set tabstop=4 shiftwidth=4 expandtab
 set wildmode=longest:full,full
 " Makes <C-Left> and <C-Right> work in tmux/screen.
 " Maybe this break when running vim in a vt?
