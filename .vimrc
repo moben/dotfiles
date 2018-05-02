@@ -30,6 +30,7 @@ Plug 'vim-syntastic/syntastic'
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'itchyny/lightline.vim'
+Plug 'felixjung/vim-base16-lightline'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 
@@ -53,10 +54,13 @@ let base16colorspace=256
 set background=dark
 "colorscheme solarized
 colorscheme base16-eighties
-let g:lightline = { 'colorscheme': 'Tomorrow_Night_Eighties', }
+let g:lightline = { 'colorscheme': 'base16_eighties', }
 set noshowmode
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+"let g:airline_extensions = []
+"let g:airline_highlighting_cache = 1
+"let g:airline_section_z = '[%L] %4l:%-2v'
 
 
 set tabstop=4 shiftwidth=4 expandtab
