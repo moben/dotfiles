@@ -64,7 +64,7 @@ set noshowmode
 
 
 set tabstop=4 shiftwidth=4 expandtab
-set wildmode=longest:full
+set wildmode=longest:full,full
 " Makes <C-Left> and <C-Right> work in tmux/screen.
 " Maybe this break when running vim in a vt?
 set term=xterm
