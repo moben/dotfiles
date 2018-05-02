@@ -28,7 +28,7 @@ Plug 'justinmk/vim-syntax-extra'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'ajh17/VimCompletesMe'
 Plug 'Shougo/neocomplete.vim'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
