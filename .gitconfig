@@ -24,10 +24,7 @@
 	pushInsteadOf = "https://gitlab.exherbo.org"
 
 [color]
-	ui = auto
-	interactive = true
-	diff = true
-	pager = false
+	ui = always
 
 [diff]
 	renames = copies
