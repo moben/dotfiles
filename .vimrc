@@ -65,6 +65,11 @@ set noshowmode
 "let g:airline_highlighting_cache = 1
 "let g:airline_section_z = '[%L] %4l:%-2v'
 
+" Break and re-indent lines visually but not physically, with an indicator
+set linebreak
+set breakindent
+set breakindentopt=sbr
+set showbreak=┗━━━━▶
 
 set wildmode=longest:full,full
 " Makes <C-Left> and <C-Right> work in tmux/screen.
