@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-sensible'
 Plug 'Shougo/vimproc.vim', { 'do': ':VimProcInstall' } " for neocomplete (optional)
+Plug 'tpope/vim-repeat'
 "Plug 'jakar/vim-AnsiEsc'
 "Plug 'godlygeek/csapprox'
 
