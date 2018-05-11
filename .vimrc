@@ -52,12 +52,13 @@ call plug#end()
 
 let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
 
-
-" needed for correct colors with base16-shell
-let base16colorspace=256
+"set termguicolors
 set background=dark
 "colorscheme solarized
-colorscheme base16-eighties
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 let g:lightline = { 'colorscheme': 'base16_eighties', }
 set noshowmode
 "let g:airline#extensions#tabline#enabled = 1
