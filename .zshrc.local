@@ -75,7 +75,12 @@ compdef _cave_cmd_search caves=cave
 compdef _cave_cmd_resolve caver=cave
 compdef _cave_cmd_resolve caveu=cave
 
-compdef _git cnf=git
+_cnf() {
+    local GIT_DIR=$(cnf rev-parse --git-dir)
+    export GIT_DIR
+    _git "${@}"
+}
+compdef _cnf cnf=git
 
 _zshrc_cnf_maybe_fetch() {
   _zshrc_cnf_date_now=${EPOCHSECONDS}
