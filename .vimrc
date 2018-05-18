@@ -40,6 +40,8 @@ Plug 'felixjung/vim-base16-lightline'
 
 Plug 'lifepillar/vim-cheat40'
 Plug 'justinmk/vim-sneak'
+Plug 'romainl/vim-qf'
+Plug 'romainl/vim-qlist'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
