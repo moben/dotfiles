@@ -75,6 +75,10 @@ set breakindent
 set breakindentopt=sbr
 set showbreak=┗━━━━▶
 
+
+" Only capture stderr from :make and friends.
+" Should avoid catching stuff like 'make: Makefile:1 rule failed' in quickfix
+set shellpipe=2>
 set wildmode=longest:full,full
 " Makes <C-Left> and <C-Right> work in tmux/screen.
 " Maybe this break when running vim in a vt?
