@@ -70,5 +70,5 @@
 
 [tig]
 	blame-options = -C -C -C
-	diff-options = -M10 -C -C --patience
+	diff-options = -M10 -C -C --histogram
 
