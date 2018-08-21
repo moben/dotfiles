@@ -1,0 +1,9 @@
+[Unit]
+Description=dotfiles update timer
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=default.target

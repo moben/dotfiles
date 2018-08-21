@@ -1,0 +1,6 @@
+[Unit]
+Description=dotfiles updater
+
+[Service]
+Type=oneshot
+ExecStart=%h/bin/cnf fetch
