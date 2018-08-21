@@ -82,18 +82,7 @@ _cnf() {
 }
 compdef _cnf cnf=git
 
-_zshrc_cnf_maybe_fetch() {
-  _zshrc_cnf_date_now=${EPOCHSECONDS}
-  _zshrc_cnf_date_fetched=${_zshrc_cnf_date_fetched:-${EPOCHSECONDS}}
-  if [[ $((_zshrc_cnf_date_now - _zshrc_cnf_date_fetched)) -ge 3600 ]]; then
-    _zshrc_cnf_date_fetched=${_zshrc_cnf_date_now}
-    cnf fetch &> /dev/null &!
-  fi
-}
-
 _zshrc_cnf_changed() {
-  _zshrc_cnf_maybe_fetch
-
   REPLY=''
   if [[ $(cnf status --porcelain) != "" ]]; then
     REPLY="{ dotfiles changed locally } "
