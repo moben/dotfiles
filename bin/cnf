@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GIT_OPTS=(
+  --no-optional-locks
   --git-dir="${HOME}/.cnf"
   --work-tree="${HOME}"
 )
