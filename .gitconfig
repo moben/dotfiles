@@ -11,9 +11,9 @@
 	smtpserverport = 587
 
 [url "git@github.com:"]
-	pushInsteadOf = "https://github.com/"
-	pushInsteadOf = "http://github.com/"
-	pushInsteadOf = "git://github.com/"
+	pushInsteadOf = "https://github.com"
+	pushInsteadOf = "http://github.com"
+	pushInsteadOf = "git://github.com"
 	pushInsteadOf = "gh:"
 
 [url "ssh://git@git.exherbo.org"]
