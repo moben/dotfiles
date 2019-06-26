@@ -10,9 +10,9 @@ export GTK2_RC_FILES="${HOME}"/.gtkrc-2.0
 
 # PATH anipulation
 #   Android
-export PATH="${PATH}:${HOME}/Hacking/android/sdk/tools:${HOME}/Hacking/android/sdk/platform-tools"
+[[ -e "${HOME}/Hacking/android" ]] && export PATH="${PATH}:${HOME}/Hacking/android/sdk/tools:${HOME}/Hacking/android/sdk/platform-tools"
 #   rustup
-source "${HOME}/.cargo/env"
+[[ -e "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
 
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
