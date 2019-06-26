@@ -40,22 +40,6 @@ bmake() {
     rm compile_commands.tmp
 }
 
-gerrit-show() {
-        git fetch gerrit
-        local refs last ref 
-        refs=$(git ls-remote gerrit | cut -d$'\t' -f2 | grep "/${1}/[[:digit:]]$") 
-        last=$(cut -d/ -f5 <<< $refs | sort -n | tail -n1) 
-        ref=$(grep "/${1}/${last}$" <<< $refs) 
-        if [[ -n ${ref} ]]; then
-                git fetch gerrit ${ref} && git show --stat -p FETCH_HEAD
-        else
-                echo "No matching ref identified: ${1}" >&2 
-                return 1
-        fi
-}
-
-gerrit='ssh -p 29418 moben@galileo.mailstation.de gerrit'
-
 alias mnt="findmnt --df"
 
 alias vp=$PAGER
