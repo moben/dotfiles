@@ -32,9 +32,11 @@ Plug 'Shougo/neocomplete.vim'
 "Plug 'vim-syntastic/syntastic'
 
 "Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'felixjung/vim-base16-lightline'
+Plug 'shinchu/lightline-gruvbox.vim'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 
@@ -54,14 +56,15 @@ call plug#end()
 
 let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
 
-"set termguicolors
+set termguicolors
 set background=dark
-"colorscheme solarized
+let g:gruvbox_italic=1
+colorscheme gruvbox
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-  source ~/.vimrc_background
+"  source ~/.vimrc_background
 endif
-let g:lightline = { 'colorscheme': 'base16_eighties', }
+"let g:lightline = { 'colorscheme': 'base16_eighties', }
 set noshowmode
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
