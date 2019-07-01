@@ -1,6 +1,6 @@
 [submodule "grml-etc-core"]
 	path = .grml-etc-core
-	url = git://git.grml.org/grml-etc-core.git
+	url = https://github.com/grml/grml-etc-core
 [submodule ".base16-shell"]
 	path = .base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
