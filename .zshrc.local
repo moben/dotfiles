@@ -71,12 +71,16 @@ compdef _cnf cnf=git
 
 _zshrc_cnf_changed() {
   REPLY=''
-  if [[ $(cnf status --porcelain) != "" ]]; then
-    REPLY="{ dotfiles changed locally } "
-  elif [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]]; then
-    REPLY="{ dotfiles not in sync } "
-  fi
+  local c s
+  [[ $(cnf status --porcelain) != "" ]] && c=1 || c=0
+  [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] && s=1 || s=0
+  case ${c}${s} in
+    11) Reply='‽ ' ;;
+    10) Reply='? ' ;;
+    01) Reply='! ' ;;
+  esac
 }
+
 grml_theme_add_token cnf_changed -f _zshrc_cnf_changed '%B%F{yellow}' '%f%b'
 # hopefully the default doesn't change too often :-/
 zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs cnf_changed percent
