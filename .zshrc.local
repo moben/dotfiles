@@ -75,9 +75,9 @@ _zshrc_cnf_changed() {
   [[ $(cnf status --porcelain) != "" ]] && c=1 || c=0
   [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] && s=1 || s=0
   case ${c}${s} in
-    11) Reply='‽ ' ;;
-    10) Reply='? ' ;;
-    01) Reply='! ' ;;
+    11) REPLY='‽ ' ;;
+    10) REPLY='? ' ;;
+    01) REPLY='! ' ;;
   esac
 }
 
