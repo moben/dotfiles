@@ -78,6 +78,8 @@ set breakindent
 set breakindentopt=sbr
 set showbreak=┗━━━━▶
 
+set listchars=tab:╰─,trail:·
+set list
 
 " Only capture stderr from :make and friends.
 " Should avoid catching stuff like 'make: Makefile:1 rule failed' in quickfix
@@ -87,3 +89,4 @@ set wildmode=longest:full,full
 " Maybe this break when running vim in a vt?
 set term=xterm
 
+inoremap jj <ESC>
