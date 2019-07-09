@@ -71,13 +71,15 @@ compdef _cnf cnf=git
 
 _zshrc_cnf_changed() {
   REPLY=''
-  local c s
-  [[ $(cnf status --porcelain) != "" ]] && c=1 || c=0
-  [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] && s=1 || s=0
-  case ${c}${s} in
-    11) REPLY='‽ ' ;;
-    10) REPLY='? ' ;;
-    01) REPLY='! ' ;;
+  local dirty lcommits rcommits
+  [[ $(cnf status --porcelain) != "" ]] && dirty=1 || dirty=0
+  [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] && lcommits=1 || lcommits=0
+  cnf merge-base --is-ancestor origin/master HEAD && rcommits=0 || rcommits=1
+  case ${dirty}${rcommits}${lcommits} in
+    11?) REPLY='‽ ' ;;
+    10?) REPLY='? ' ;;
+    01?) REPLY='! ' ;;
+    001) REPLY='. ' ;;
   esac
 }
 
