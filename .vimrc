@@ -49,6 +49,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-sleuth'
 "Plug 'guns/xterm-color-table.vim'
 " Initialize plugin system
 call plug#end()
