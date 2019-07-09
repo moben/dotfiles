@@ -82,4 +82,4 @@
 	diff-options = -M10 -C -C --histogram
 
 [include]
-    path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
