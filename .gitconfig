@@ -3,6 +3,9 @@
 	email = benedikt.morbach@googlemail.com
 	signingkey = 12AFB46F
 
+[github]
+	user = moben
+
 [sendemail "gmail"]
 	from = Benedikt Morbach <benedikt.morbach@googlemail.com>
 	smtpencryption = tls
@@ -30,6 +33,9 @@
 	renames = copies
 	algorithm = histogram
 
+[log]
+	mailmap = true
+
 [credential]
 	helper = libsecret
 
@@ -44,7 +50,13 @@
 [fetch]
 	fsckobjects = true
 [receive]
-	fsckObjects = true 
+	fsckObjects = true
+
+[pull]
+	rebase = true
+
+[rerere]
+	enabled = true
 
 [alias]
 	rbi = "!                                            \
@@ -65,10 +77,9 @@
 	        git rebase origin/${1:-master};             \
 	    }; f"
 
-[include]
-	path = ~/.gitconfig.local
-
 [tig]
-	blame-options = -C -C -C
+	blame-options = -C -C
 	diff-options = -M10 -C -C --histogram
 
+[include]
+    path = ~/.gitconfig.local
