@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[[ ${0} == */* ]] || exit 1
+
+basedir=${0%/*}
+
+mv "${basedir}/.git" "${basedir}/.cnf"
+mv -f "${basedir}"/{.*,*} "${HOME}"
+
+cd "${HOME}"
+rmdir "${basedir}"
+
+bin/cnf submodule update --init
+bin/cnf config status.showUntrackedFiles no
