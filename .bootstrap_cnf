@@ -1,11 +1,13 @@
 #!/bin/bash
 
+shopt -s dotglob
+
 [[ ${0} == */* ]] || exit 1
 
 basedir=${0%/*}
 
 mv "${basedir}/.git" "${basedir}/.cnf"
-cp -af "${basedir}"/{.*,*} "${HOME}"
+cp -af "${basedir}"/* "${HOME}"
 
 cd "${HOME}"
 rm -rf "${basedir}"
