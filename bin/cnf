@@ -1,9 +1,8 @@
 #!/bin/bash
 
 GIT_OPTS=(
-  --no-optional-locks
   --git-dir="${HOME}/.cnf"
   --work-tree="${HOME}"
 )
 
-exec git "${GIT_OPTS[@]}" "${@}"
+GIT_OPTIONAL_LOCKS=0 exec git "${GIT_OPTS[@]}" "${@}"
