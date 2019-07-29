@@ -21,13 +21,6 @@
   :config (auto-compile-on-load-mode))
 (setq load-prefer-newer t)
 
-;; Automatically update packages
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
-
 ;; Move automatically generated stuff to a different file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file :noerror)
@@ -49,7 +42,6 @@
 ;; === UI ===
 
 ;; No delay on printing key combinations
-
 (setq echo-keystrokes 0.01)
 
 ;; No window chrome
@@ -57,11 +49,13 @@
 (menu-bar-mode 0)
 (scroll-bar-mode -1)
 
-;; Apply a theme
+;; 'bar' shaped cursor
+(setq-default cursor-type 'bar) 
 
-(use-package zenburn-theme
+;; Apply a theme
+(use-package naysayer-theme
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'naysayer t))
 
 ;; make sure the theme is applied when emacs is started via the daemon
 (defun hrs/apply-theme ()
@@ -75,15 +69,28 @@
               (with-selected-frame frame (hrs/apply-theme))))
   (hrs/apply-theme))
 
+(use-package which-key)
+(setq which-key-idle-delay 0.3)
+(which-key-mode)
+
 ;; hightlight the current line
 (global-hl-line-mode)
-
-;; test new theme https://github.com/nickav/naysayer-theme.el
-(load-file (expand-file-name "naysayer-theme.el" user-emacs-directory))
-(load-theme 'naysayer)
 
 ;; highlight uncommited changes
 (use-package diff-hl
   :config
   (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
   (add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode))
+
+
+;; === ORG-MODE ===
+
+(require 'org)
+(setq org-directory "~/Notes")
+(setq org-default-notes-file (expand-file-name "Capture.org" org-directory))
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+
+;; === ===
