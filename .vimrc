@@ -62,7 +62,7 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
 
 set termguicolors
-set background=dark
+set background=light
 let g:gruvbox_italic=1
 colorscheme gruvbox
 if filereadable(expand("~/.vimrc_background"))
