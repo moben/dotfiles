@@ -3,10 +3,19 @@ export BROWSER=firefox
 export PATH="${HOME}/bin:${PATH}"
 
 export PAGER="less -R"
-export TERMINAL="germinal"
 
 export GTK2_RC_FILES="${HOME}"/.gtkrc-2.0
 
+# find terminal
+_find_term() {
+  local terminals=( 'germinal', 'gnome-terminal' )
+  for t in "${terminals[@]}"; do
+    which "${t}" &>/dev/null || continue
+    export TERMINAL="${t}"
+    break
+  done
+}
+_find_term
 
 # PATH anipulation
 #   Android
