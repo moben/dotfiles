@@ -69,7 +69,7 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
 "  source ~/.vimrc_background
 endif
-"let g:lightline = { 'colorscheme': 'base16_eighties', }
+let g:lightline = { 'colorscheme':  'gruvbox', }
 set noshowmode
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
