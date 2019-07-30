@@ -99,3 +99,5 @@ zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs cnf_
 eval `dircolors -b /etc/DIR_COLORS`
 source ~/.base16-shell/base16-shell.plugin.zsh
 base16_gruvbox-light-medium
+
+[[ -e ~/.zshrc.host ]] && source ~/.zshrc.host
