@@ -71,18 +71,18 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 let g:lightline = { 'colorscheme':  'gruvbox', }
 set noshowmode
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 "let g:airline_extensions = []
 "let g:airline_highlighting_cache = 1
 "let g:airline_section_z = '[%L] %4l:%-2v'
 
 
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
-:set guioptions-=L  "remove left-hand scroll bar
-
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set guifont="Fira Mono Medium 11"
 
 " Break and re-indent lines visually but not physically, with an indicator
 set linebreak
