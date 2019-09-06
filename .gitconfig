@@ -54,6 +54,8 @@
 
 [pull]
 	rebase = true
+[merge]
+	ff = no
 
 [rerere]
 	enabled = true
