@@ -82,6 +82,13 @@
 [tig]
 	blame-options = -C -C
 	diff-options = -M10 -C -C --histogram
+	diff-highlight = true
 
 [include]
 	path = ~/.gitconfig.local
+[interactive]
+	diffFilter = diff-highlight
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
