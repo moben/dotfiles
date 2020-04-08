@@ -5,7 +5,7 @@ set tabstop=4 shiftwidth=4 expandtab
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -31,6 +31,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'ajh17/VimCompletesMe'
 Plug 'Shougo/neocomplete.vim'
 "Plug 'vim-syntastic/syntastic'
+Plug 'Chiel92/vim-autoformat'
 
 "Plug 'altercation/vim-colors-solarized'
 "Plug 'chriskempson/base16-vim'
@@ -68,7 +69,7 @@ let g:gruvbox_italic=1
 colorscheme gruvbox
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-"  source ~/.vimrc_background
+  "  source ~/.vimrc_background
 endif
 let g:lightline = { 'colorscheme':  'gruvbox', }
 set noshowmode
@@ -101,5 +102,9 @@ set wildmode=longest:full,full
 " Makes <C-Left> and <C-Right> work in tmux/screen.
 " Maybe this break when running vim in a vt?
 set term=xterm
+
+autocmd BufWritePre * if count(['c','cpp'],&filetype)
+      \ | :Autoformat
+      \ | endif
 
 inoremap jj <ESC>
