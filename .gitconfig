@@ -83,11 +83,44 @@
 	        git reset --hard ${hash};                   \
 	        git rebase origin/${1:-master};             \
 	    }; f"
-
+	wba = "!                                                         \
+	    f() {                                                        \
+	        if [[ ${#} -ge 2 ]]; then                                \
+	            base=${2};                                           \
+	        elif [[ -n $(git show-ref --heads --tags ${1}) ]]; then  \
+	            base=${1};                                           \
+	        elif [[ -n $(git show-ref origin/${1}) ]]; then          \
+	            base=origin/${1};                                    \
+	        else                                                     \
+	            git fetch --tags --prune;                            \
+	            if [[ -n $(git show-ref origin/${1}) ]]; then        \
+	                base=origin/${1};                                \
+	            else                                                 \
+	                base=master;                                     \
+	            fi;                                                  \
+	        fi;                                                      \
+	        [[ -n ${base} ]] || return 2;                            \
+	        git worktree add -b ${1} ${1} ${base};                   \
+	    }; f"
+	wbd = "!                                                         \
+	    f() {                                                        \
+	        git worktree remove ${1};                                \
+	        cd master;                                               \
+	        while true; do                                           \
+	            git branch -d ${1} && break;                         \
+	            read -p 'Not fully merged, delete anyway? [Yn] ' yn; \
+	            case $yn in                                          \
+	                [Yy]*|'') git branch -D ${1}; break;;            \
+	                [Nn]*) break;;                                   \
+	                *) echo 'Please answer yes or no.';;             \
+	            esac;                                                \
+	        done;                                                    \
+		}; f"
 [tig]
 	blame-options = -C -C
 	diff-options = -M10 -C -C --histogram
 	diff-highlight = true
+	mailmap = true
 
 [include]
 	path = ~/.gitconfig.local
