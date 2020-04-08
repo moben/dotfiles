@@ -44,6 +44,11 @@
 
 [core]
 	quotePath = false
+	commitGraph = true
+[protocol]
+	version = 2
+[gc]
+	writeCommitGraph = true
 
 [transfer]
 	fsckobjects = true
