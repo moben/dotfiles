@@ -52,5 +52,22 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+; Default to clangd
+; See https://github.com/hlissner/doom-emacs/issues/2689
 (after! lsp-clients
   (set-lsp-priority! 'clangd 1))  ; ccls has priority 0
+
+; From https://eklitzke.org/smarter-emacs-clang-format
+(defun haozeke/clang-format-buffer-conditional ()
+(interactive)
+  "Reformat buffer if .clang-format exists in the projectile root."
+  (when (f-exists? (expand-file-name ".clang-format" (projectile-project-root)))
+    (+format/buffer)))
+
+; The interactive thing is REQUIRED
+(defun haozeke/clang-format-buffer-smart-on-save ()
+(interactive)
+  "Add auto-save hook for clang-format-buffer-smart."
+  (add-hook 'before-save-hook 'haozeke/clang-format-buffer-conditional nil t))
+; This is a doom-emacs convinience macro
+(add-hook! (c-mode c++-mode cc-mode) #'haozeke/clang-format-buffer-smart-on-save)
