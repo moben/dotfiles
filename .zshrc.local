@@ -100,4 +100,8 @@ eval `dircolors -b /etc/DIR_COLORS`
 source ~/.base16-shell/base16-shell.plugin.zsh
 base16_gruvbox-light-medium
 
+if type -f VCS_INFO_get_data_git &>/dev/null; then
+  eval "$(type -f VCS_INFO_get_data_git  | sed -e 's#--show-toplevel )#--show-toplevel 2> /dev/null); if [[ -z ${gitbase} ]]; then gitbase=${gitdir:P}; fi;#g')"
+fi
+
 [[ -e ~/.zshrc.host ]] && source ~/.zshrc.host
