@@ -3,6 +3,7 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
+;; For changing config based on the type of machine (personal/company)
 (use-package! f)
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
