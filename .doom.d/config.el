@@ -56,6 +56,9 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Enable deferred compilation for each loaded .el/.elc file
+(setq comp-deferred-compilation t)
+
 ; Default to clangd
 ; See https://github.com/hlissner/doom-emacs/issues/2689
 (after! lsp-clients
