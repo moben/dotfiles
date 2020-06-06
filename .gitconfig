@@ -26,8 +26,8 @@
 [url "ssh://git@gitlab.exherbo.org"]
 	pushInsteadOf = "https://gitlab.exherbo.org"
 
-[color]
-	ui = always
+; [color]
+; 	ui = always
 
 [diff]
 	renames = copies
