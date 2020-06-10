@@ -54,6 +54,7 @@
 	fsckobjects = true
 [fetch]
 	fsckobjects = true
+	writeCommitGraph = true
 [receive]
 	fsckObjects = true
 
