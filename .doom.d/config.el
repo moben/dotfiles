@@ -56,6 +56,9 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Weeks don't start on the weekend in sane locales
+(setq  calendar-week-start-day 1)
+
 ;; Enable deferred compilation for each loaded .el/.elc file
 (setq comp-deferred-compilation t)
 
