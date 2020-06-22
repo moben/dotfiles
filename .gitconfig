@@ -55,6 +55,7 @@
 [fetch]
 	fsckobjects = true
 	writeCommitGraph = true
+	parallel = 0
 [receive]
 	fsckObjects = true
 
