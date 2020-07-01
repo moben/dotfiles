@@ -81,9 +81,11 @@
 	            echo ${state};                          \
 	            return 2;                               \
 	        fi;                                         \
-	        git rbi ${1} && git push;                   \
+	        if git rebase -i @{u}; then                 \
+	            git push origin HEAD:refs/heads/${1};   \
+	        fi;                                         \
 	        git reset --hard ${hash};                   \
-	        git rebase origin/${1:-master};             \
+	        git rebase @{u};                            \
 	    }; f"
 	wba = "!                                                         \
 	    f() {                                                        \
