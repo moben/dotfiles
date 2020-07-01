@@ -58,6 +58,8 @@
 
 ;; Weeks don't start on the weekend in sane locales
 (setq  calendar-week-start-day 1)
+(setq org-log-done 'time)
+(setq org-agenda-skip-scheduled-if-done t)
 
 ;; Enable deferred compilation for each loaded .el/.elc file
 (setq comp-deferred-compilation t)
