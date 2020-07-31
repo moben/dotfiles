@@ -79,7 +79,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 "let g:airline_highlighting_cache = 1
 "let g:airline_section_z = '[%L] %4l:%-2v'
 
-
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
