@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+die() {
+    echo "${*}"
+    exit 1
+}
+
+gitbin=$(which git) || die "git not found"
+
+for pdir in .. ../..; do # bin/git, libexec/git-core/git
+    diffhl="${gitbin%/*}/${pdir}/share/git/contrib/diff-highlight/diff-highlight"
+    [[ -e ${diffhl} ]] || continue
+    exec "${diffhl}"
+done
