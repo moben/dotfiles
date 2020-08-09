@@ -60,6 +60,7 @@
 (setq  calendar-week-start-day 1)
 (setq org-log-done 'time)
 (setq org-agenda-skip-scheduled-if-done t)
+(setq org-read-date-force-compatible-dates nil)
 
 ;; Enable deferred compilation for each loaded .el/.elc file
 (setq comp-deferred-compilation t)
