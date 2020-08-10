@@ -7,8 +7,7 @@ die() {
 
 gitbin=$(which git) || die "git not found"
 
-for pdir in .. ../..; do # bin/git, libexec/git-core/git
-    diffhl="${gitbin%/*}/${pdir}/share/git/contrib/diff-highlight/diff-highlight"
+for diffhl in "${gitbin%/*}"/{..,../..}/share/git{-core,}/contrib/{diff-highlight/,}diff-highlight; do
     [[ -e ${diffhl} ]] || continue
     exec "${diffhl}"
 done
