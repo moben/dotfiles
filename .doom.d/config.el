@@ -23,7 +23,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "monospace" :size 14))
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -42,7 +43,7 @@
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
-;; - `use-package' for configuring packages
+;; - `use-package!' for configuring packages
 ;; - `after!' for running code after a package has loaded
 ;; - `add-load-path!' for adding directories to the `load-path', relative to
 ;;   this file. Emacs searches the `load-path' when you load packages with
@@ -50,10 +51,10 @@
 ;; - `map!' for binding new keys
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
 ;;
-;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
+;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
 ;; Weeks don't start on the weekend in sane locales
@@ -63,12 +64,25 @@
 (setq org-read-date-force-compatible-dates nil)
 
 ;; Enable deferred compilation for each loaded .el/.elc file
-(setq comp-deferred-compilation t)
+;; (setq comp-deferred-compilation t)
+
+(setq-default lsp-pyls-plugins-flake8-enabled  t)
+(setq-default lsp-pyls-plugins-pylint-enabled  t)
+(setq-default lsp-pyls-plugins-pylint-args     ["--disable=C0330,C0326"])
+;; (setq-default lsp-pyls-configuration-sources ["flake8"])
+(after! lsp-python-ms
+  (set-lsp-priority! 'mspyls -2))
 
 ; Default to clangd
 ; See https://github.com/hlissner/doom-emacs/issues/2689
-(after! lsp-clients
+(after! lsp-mode
   (set-lsp-priority! 'clangd 1))  ; ccls has priority 0
+
+(setq lsp-clients-clangd-args '("-j=4"
+                                "--background-index"
+                                "--pch-storage=memory"
+                                "--clang-tidy"
+                                "--header-insertion=iwyu"))
 
 ; From https://eklitzke.org/smarter-emacs-clang-format
 (defun haozeke/clang-format-buffer-conditional ()
