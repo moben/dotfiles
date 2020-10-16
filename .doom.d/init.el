@@ -23,9 +23,7 @@
        (company +childframe)          ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ;;https://github.com/hlissner/doom-emacs/pull/3799
-       ;;(ivy +fuzzy +prescient +icons +childframe)               ; a search engine for love and life
-       (ivy +fuzzy +prescient +icons)               ; a search engine for love and life
+       (ivy +fuzzy +prescient +icons +childframe)               ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
