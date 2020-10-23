@@ -34,10 +34,11 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'Chiel92/vim-autoformat'
 
 "Plug 'altercation/vim-colors-solarized'
-"Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
+" Plug 'morhetz/gruvbox'
 " Plug 'itchyny/lightline.vim'
 " Plug 'felixjung/vim-base16-lightline'
+Plug 'mike-hearn/base16-vim-lightline'
 " Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -64,14 +65,13 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 let g:linuxsty_patterns = [ '/usr/src/linux', $HOME . '/Hacking/linux', $HOME . '/src/qsimu-linux/' ]
 
 set termguicolors
-set background=light
+set background=dark
 let g:gruvbox_italic=1
-colorscheme gruvbox
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-  "  source ~/.vimrc_background
+   source ~/.vimrc_background
 endif
-let g:lightline = { 'colorscheme':  'gruvbox', }
+let g:lightline = { 'colorscheme':  'base16_eighties', }
 set noshowmode
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
