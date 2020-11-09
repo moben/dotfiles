@@ -76,7 +76,7 @@
 
 ; Default to clangd
 ; See https://github.com/hlissner/doom-emacs/issues/2689
-(after! lsp-mode
+(after! lsp-clangd
   (set-lsp-priority! 'clangd 1))  ; ccls has priority 0
 
 (setq lsp-clients-clangd-args '("-j=4"
