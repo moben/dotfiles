@@ -83,6 +83,8 @@
                                 "--background-index"
                                 "--pch-storage=memory"
                                 "--clang-tidy"
+                                ;; "--log=verbose"
+                                "--completion-style=detailed"
                                 "--header-insertion=iwyu"))
 
 ; From https://eklitzke.org/smarter-emacs-clang-format
