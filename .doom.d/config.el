@@ -67,15 +67,16 @@
 ;; Enable deferred compilation for each loaded .el/.elc file
 ;; (setq comp-deferred-compilation t)
 
+;; Configure python language server
 (setq-default lsp-pyls-plugins-flake8-enabled  t)
 (setq-default lsp-pyls-plugins-pylint-enabled  t)
 (setq-default lsp-pyls-plugins-pylint-args     ["--disable=C0330,C0326"])
 ;; (setq-default lsp-pyls-configuration-sources ["flake8"])
-(after! lsp-python-ms
-  (set-lsp-priority! 'mspyls -2))
+;; (after! lsp-python-ms
+;;   (set-lsp-priority! 'mspyls -2))
 
-; Default to clangd
-; See https://github.com/hlissner/doom-emacs/issues/2689
+;; Default to clangd for cc-mode lsp
+;; See https://github.com/hlissner/doom-emacs/issues/2689
 (after! lsp-clangd
   (set-lsp-priority! 'clangd 1))  ; ccls has priority 0
 
@@ -87,14 +88,16 @@
                                 "--completion-style=detailed"
                                 "--header-insertion=iwyu"))
 
-; From https://eklitzke.org/smarter-emacs-clang-format
+;; Automatic reformat if .clang-format exists
+;; From https://eklitzke.org/smarter-emacs-clang-format
 (defun haozeke/clang-format-buffer-conditional ()
 (interactive)
   "Reformat buffer if .clang-format exists in the projectile root."
   (when (f-exists? (expand-file-name ".clang-format" (projectile-project-root)))
     (+format/buffer)))
 
-; The interactive thing is REQUIRED
+;; Auto-save hook for the above
+;; The interactive thing is REQUIRED
 (defun haozeke/clang-format-buffer-smart-on-save ()
 (interactive)
   "Add auto-save hook for clang-format-buffer-smart."
