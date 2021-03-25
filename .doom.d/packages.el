@@ -50,3 +50,5 @@
 ;(unpin! t)
 
 (package! f)
+(package! hl-line+
+  :recipe (:local-repo "3rd-party/hl-line+"))

@@ -75,6 +75,13 @@
 ;; (after! lsp-python-ms
 ;;   (set-lsp-priority! 'mspyls -2))
 
+(setq display-line-numbers-type nil)
+(remove-hook 'doom-first-buffer-hook #'global-hl-line-mode)
+(use-package! hl-line+
+  :config
+  (hl-line-when-idle-interval 0.3)
+  (toggle-hl-line-when-idle 1))
+
 ;; Default to clangd for cc-mode lsp
 ;; See https://github.com/hlissner/doom-emacs/issues/2689
 (after! lsp-clangd
