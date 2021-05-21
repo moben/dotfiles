@@ -13,6 +13,12 @@
 	smtpuser = benedikt.morbach@googlemail.com
 	smtpserverport = 587
 
+[url "git@github.com:moben/"]
+	InsteadOf = "https://github.com/moben/"
+	InsteadOf = "http://github.com/moben/"
+	InsteadOf = "git://github.com/moben/"
+	InsteadOf = "gh:moben/"
+
 [url "git@github.com:"]
 	pushInsteadOf = "https://github.com"
 	pushInsteadOf = "http://github.com"
