@@ -142,3 +142,6 @@
 	diff = diff-highlight | less
 [commit]
 	verbose = 2
+[rebase]
+	autoStash = true
+	autoSquash = true
