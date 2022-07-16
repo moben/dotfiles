@@ -126,6 +126,7 @@
 	            esac;                                                \
 	        done;                                                    \
 		}; f"
+	dt="-c diff.external=difft diff -M10 -C -C"
 [tig]
 	blame-options = -C -C
 	diff-options = -M10 -C -C --histogram
