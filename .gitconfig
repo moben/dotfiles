@@ -69,6 +69,10 @@
 	rebase = true
 [merge]
 	ff = no
+	conflictstyle = zdiff3
+[rebase]
+	autoSquash = true
+	autoStash = true
 
 [rerere]
 	enabled = true
@@ -132,6 +136,8 @@
 	diff-options = -M10 -C -C --histogram
 	diff-highlight = true
 	mailmap = true
+[absorb]
+    maxStack=50
 
 [include]
 	path = ~/.gitconfig.local
