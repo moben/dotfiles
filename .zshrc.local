@@ -1,5 +1,11 @@
 export BROWSER=firefox
 
+# PATH anipulation
+#   Android
+[[ -e "${HOME}/Hacking/android" ]] && export PATH="${PATH}:${HOME}/Hacking/android/sdk/tools:${HOME}/Hacking/android/sdk/platform-tools"
+#   rustup
+[[ -e "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
+
 export PATH="${HOME}/bin:${HOME}/.local/bin:${HOME}/.emacs.d/bin:${PATH}"
 
 export PAGER="less -R"
@@ -8,20 +14,14 @@ export GTK2_RC_FILES="${HOME}"/.gtkrc-2.0
 
 # find terminal
 _find_term() {
-  local terminals=( 'germinal', 'gnome-terminal' )
-  for t in "${terminals[@]}"; do
-    which "${t}" &>/dev/null || continue
-    export TERMINAL="${t}"
-    break
-  done
+    local terminals=( 'germinal', 'gnome-terminal' )
+    for t in "${terminals[@]}"; do
+        which "${t}" &>/dev/null || continue
+        export TERMINAL="${t}"
+        break
+    done
 }
 _find_term
-
-# PATH anipulation
-#   Android
-[[ -e "${HOME}/Hacking/android" ]] && export PATH="${PATH}:${HOME}/Hacking/android/sdk/tools:${HOME}/Hacking/android/sdk/platform-tools"
-#   rustup
-[[ -e "${HOME}/.cargo/env" ]] && source "${HOME}/.cargo/env"
 
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
@@ -29,9 +29,9 @@ export QT_IM_MODULE=xim
 zmodload zsh/datetime
 
 if [[ $UID == 0 ]] ; then
-	zstyle ':prompt:grml:*:items:user' pre '%F{red}'
+    zstyle ':prompt:grml:*:items:user' pre '%F{red}'
 else
-	zstyle ':prompt:grml:*:items:user' pre '%F{blue}'
+    zstyle ':prompt:grml:*:items:user' pre '%F{blue}'
 fi
 
 
@@ -68,7 +68,7 @@ cavesc() {
 }
 
 cavewatch() {
-	less -R /var/log/paludis/([0-9]##-${2:-"install"}-*${1}*.out)(.om[1])
+    less -R /var/log/paludis/([0-9]##-${2:-"install"}-*${1}*.out)(.om[1])
 }
 
 compdef _cave_cmd_sync cavesc=cave
@@ -84,17 +84,17 @@ _cnf() {
 compdef _cnf cnf=git
 
 _zshrc_cnf_changed() {
-  REPLY=''
-  local dirty lcommits rcommits
-  [[ $(cnf status --porcelain) != "" ]] && dirty=1 || dirty=0
-  [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] && lcommits=1 || lcommits=0
-  cnf merge-base --is-ancestor origin/master HEAD && rcommits=0 || rcommits=1
-  case ${dirty}${rcommits}${lcommits} in
-    11?) REPLY='‽ ' ;;
-    10?) REPLY='? ' ;;
-    01?) REPLY='! ' ;;
-    001) REPLY='. ' ;;
-  esac
+    REPLY=''
+    local dirty lcommits rcommits
+    [[ $(cnf status --porcelain) != "" ]] && dirty=1 || dirty=0
+    [[ $(cnf rev-parse origin/master) != $(cnf rev-parse HEAD) ]] && lcommits=1 || lcommits=0
+    cnf merge-base --is-ancestor origin/master HEAD && rcommits=0 || rcommits=1
+    case ${dirty}${rcommits}${lcommits} in
+        11?) REPLY='‽ ' ;;
+        10?) REPLY='? ' ;;
+        01?) REPLY='! ' ;;
+        001) REPLY='. ' ;;
+    esac
 }
 
 grml_theme_add_token cnf_changed -f _zshrc_cnf_changed '%B%F{yellow}' '%f%b'
@@ -108,7 +108,7 @@ source ~/.base16-shell/base16-shell.plugin.zsh
 base16_dracula
 
 if type -f VCS_INFO_get_data_git &>/dev/null; then
-  eval "$(type -f VCS_INFO_get_data_git  | sed -e 's#--show-toplevel )#--show-toplevel 2> /dev/null); if [[ -z ${gitbase} ]]; then gitbase=${gitdir:P}; fi;#g')"
+    eval "$(type -f VCS_INFO_get_data_git  | sed -e 's#--show-toplevel )#--show-toplevel 2> /dev/null); if [[ -z ${gitbase} ]]; then gitbase=${gitdir:P}; fi;#g')"
 fi
 
 [[ -e ~/.zshrc.host ]] && source ~/.zshrc.host
