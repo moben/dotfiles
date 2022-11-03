@@ -35,9 +35,14 @@ else
 fi
 
 
-if [[ "$TERM" == "xterm" ]]; then
-    # No it isn't, it's gnome-terminal
-    export TERM=xterm-256color
+# if [[ "$TERM" == "xterm" ]]; then
+#     # No it isn't, it's gnome-terminal
+#     export TERM=xterm-256color
+# fi
+
+if [[ "$COLORTERM" == "yes" ]]; then
+    # gnome terminal (some versions?)
+    export COLORTERM=truecolor
 fi
 
 bmake() {
@@ -99,7 +104,8 @@ zstyle ':prompt:grml:left:setup' items rc change-root user at host path vcs cnf_
 eval `dircolors -b /etc/DIR_COLORS`
 source ~/.base16-shell/base16-shell.plugin.zsh
 # base16_gruvbox-light-medium
-base16_eighties
+# base16_eighties
+base16_dracula
 
 if type -f VCS_INFO_get_data_git &>/dev/null; then
   eval "$(type -f VCS_INFO_get_data_git  | sed -e 's#--show-toplevel )#--show-toplevel 2> /dev/null); if [[ -z ${gitbase} ]]; then gitbase=${gitdir:P}; fi;#g')"

@@ -35,6 +35,7 @@ Plug 'Chiel92/vim-autoformat'
 
 "Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'morhetz/gruvbox'
 " Plug 'itchyny/lightline.vim'
 " Plug 'felixjung/vim-base16-lightline'
@@ -72,6 +73,10 @@ if filereadable(expand("~/.vimrc_background"))
    source ~/.vimrc_background
 endif
 let g:lightline = { 'colorscheme':  'base16_eighties', }
+
+colorscheme dracula
+let g:lightline = { 'colorscheme':  'dracula', }
+
 set noshowmode
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
