@@ -8,3 +8,6 @@
 	path = .emacs.d
 	url = https://github.com/hlissner/doom-emacs
 	branch = develop
+[submodule ".dracula_dircolors"]
+	path = .dracula_dircolors
+	url = https://github.com/dracula/dircolors.git
