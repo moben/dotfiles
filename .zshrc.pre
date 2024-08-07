@@ -1,2 +1,3 @@
+zstyle ':grml:chpwd:dirstack' enable false
 
 ls_options=( -N )
